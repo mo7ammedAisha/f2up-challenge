@@ -71,7 +71,7 @@ The filename needs to be constructed very precisely:
 	- $ git push -u origin main
 
 	- updating the files later
-	- $ git rm -r *
+	- $ git rm <custom-file>
 	- $ git add .
 	- $ git commit -m "Update Files"
 	- $ git push -u origin main
